@@ -6,11 +6,14 @@ import {
   Body,
   Put,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 
 import { EventosService } from '../services/eventos.service';
 import { CreateEventosDto, UpdateEventosDto } from '../dtos/eventos.dto';
+import { AuthGuard } from '@nestjs/passport';
 
+@UseGuards(AuthGuard('jwt'))
 @Controller('Eventos')
 export class EventosController {
   constructor(private EventosService: EventosService) {}

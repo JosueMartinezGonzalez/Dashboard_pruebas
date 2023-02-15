@@ -6,11 +6,14 @@ import {
   Body,
   Put,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 
 import { ProfesdataService } from '../services/profesdata.service';
 import { CreateProfesdataDto, UpdateProfesdataDto } from '../dtos/profesdata.dto';
+import { AuthGuard } from '@nestjs/passport';
 
+@UseGuards(AuthGuard('jwt'))
 @Controller('profesdata')
 export class ProfesdataController {
   constructor(private ProfesdataService: ProfesdataService) {}

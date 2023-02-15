@@ -6,11 +6,14 @@ import {
   Body,
   Put,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 
 import { PeriodicoService } from '../services/periodico.service';
 import { CreatePeriodicoDto, UpdatePeriodicoDto } from '../dtos/periodico.dto';
+import { AuthGuard } from '@nestjs/passport';
 
+@UseGuards(AuthGuard('jwt'))
 @Controller('Periodico')
 export class PeriodicoController {
   constructor(private PeriodicoService: PeriodicoService) {}

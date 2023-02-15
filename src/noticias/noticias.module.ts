@@ -1,5 +1,6 @@
-import { Module } from '@nestjs/common';
+import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
+import * as bodyParser from 'body-parser';
 
 import { NoticiaController } from './controllers/noticia.controller';
 import { NoticiaService } from './services/noticia.service';
@@ -20,4 +21,9 @@ import { ProductsModule } from './../products/products.module';
   controllers: [NoticiaController],
   providers: [NoticiaService],
 })
-export class NoticiasModule {}
+export class NoticiasModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(bodyParser.json({ limit: '5gb' }));
+    consumer.apply(bodyParser.urlencoded({ limit: '5gb', extended: true }));
+  }
+}

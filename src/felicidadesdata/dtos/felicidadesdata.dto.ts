@@ -16,7 +16,7 @@ export class CreateFelicidadesdataDto {
   @IsNotEmpty()
   readonly nombre: string;
 
-  @IsDate()
+  @IsString()
   @IsNotEmpty()
   readonly plate: string;
 

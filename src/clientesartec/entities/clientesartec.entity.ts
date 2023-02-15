@@ -4,7 +4,10 @@ import { Document, Types } from 'mongoose';
 @Schema()
 export class Clientesartec extends Document {
   @Prop({ required: true })
-  pdf: string;
+  img: string;
+
+  @Prop({ required: true })
+  nombre: string;
 }
 
 export const ClientesartecSchema = SchemaFactory.createForClass(Clientesartec);

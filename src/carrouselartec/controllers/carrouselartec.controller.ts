@@ -6,11 +6,14 @@ import {
   Body,
   Put,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 
 import { CarrouselartecService } from '../services/carrouselartec.service';
 import { CreateCarrouselartecDto, UpdateCarrouselartecDto } from '../dtos/carrouselartec.dto';
+import { AuthGuard } from '@nestjs/passport';
 
+@UseGuards(AuthGuard('jwt'))
 @Controller('Carrouselartec')
 export class CarrouselartecController {
   constructor(private CarrouselartecService: CarrouselartecService) {}

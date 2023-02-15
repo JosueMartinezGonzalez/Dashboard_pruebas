@@ -16,7 +16,7 @@ export class CreateTestimoniosdataDto {
   @IsNotEmpty()
   readonly nombre: string;
 
-  @IsDate()
+  @IsString()
   @IsNotEmpty()
   readonly titulo: string;
 

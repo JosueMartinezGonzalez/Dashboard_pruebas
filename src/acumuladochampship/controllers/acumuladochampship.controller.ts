@@ -6,11 +6,14 @@ import {
   Body,
   Put,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 
 import { AcumuladochampshipService } from '../services/acumuladochampship.service';
 import { CreateAcumuladochampshipDto, UpdateAcumuladochampshipDto } from '../dtos/acumuladochampship.dto';
+import { AuthGuard } from '@nestjs/passport';
 
+@UseGuards(AuthGuard('jwt'))
 @Controller('Acumuladochampship')
 export class AcumuladochampshipController {
   constructor(private AcumuladochampshipService: AcumuladochampshipService) {}

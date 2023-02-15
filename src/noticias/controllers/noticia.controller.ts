@@ -6,11 +6,14 @@ import {
   Body,
   Put,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 
 import { NoticiaService } from '../services/noticia.service';
 import { CreateNoticiaDto, UpdateNoticiaDto } from '../dtos/noticia.dto';
+import { AuthGuard } from '@nestjs/passport';
 
+@UseGuards(AuthGuard('jwt'))
 @Controller('noticia')
 export class NoticiaController {
   constructor(private NoticiaService: NoticiaService) {}

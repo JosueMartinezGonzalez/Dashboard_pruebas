@@ -6,11 +6,14 @@ import {
   Body,
   Put,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 
 import { CarrouselbmxService } from '../services/carrouselbmx.service';
 import { CreateCarrouselbmxDto, UpdateCarrouselbmxDto } from '../dtos/carrouselbmx.dto';
+import { AuthGuard } from '@nestjs/passport';
 
+@UseGuards(AuthGuard('jwt'))
 @Controller('carrouselbmx')
 export class CarrouselbmxController {
   constructor(private CarrouselbmxService: CarrouselbmxService) {}

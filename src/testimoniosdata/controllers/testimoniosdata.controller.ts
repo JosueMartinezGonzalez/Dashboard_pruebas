@@ -6,11 +6,14 @@ import {
   Body,
   Put,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 
 import { TestimoniosdataService } from '../services/testimoniosdata.service';
 import { CreateTestimoniosdataDto, UpdateTestimoniosdataDto } from '../dtos/testimoniosdata.dto';
+import { AuthGuard } from '@nestjs/passport';
 
+@UseGuards(AuthGuard('jwt'))
 @Controller('testimoniosdata')
 export class TestimoniosdataController {
   constructor(private TestimoniosdataService: TestimoniosdataService) {}

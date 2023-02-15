@@ -4,7 +4,10 @@ import { Document, Types } from 'mongoose';
 @Schema()
 export class Calendarios extends Document {
   @Prop({ required: true })
-  pdf: string;
+  titulo: string;
+
+  @Prop({ required: true })
+  img: string;
 }
 
 export const CalendariosSchema = SchemaFactory.createForClass(Calendarios);

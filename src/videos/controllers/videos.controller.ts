@@ -6,11 +6,14 @@ import {
   Body,
   Put,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 
 import { VideoService } from '../services/videos.service';
 import { CreateVideoDto, UpdateVideoDto } from '../dtos/videos.dto';
+import { AuthGuard } from '@nestjs/passport';
 
+@UseGuards(AuthGuard('jwt'))
 @Controller('video')
 export class VideoController {
   constructor(private VideoService: VideoService) {}

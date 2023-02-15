@@ -2,13 +2,14 @@ import {
   IsString,
   IsNotEmpty,
   IsDate,
+  IsNumber,
   IsArray,
   ValidateNested,
 } from 'class-validator';
 import { PartialType } from '@nestjs/swagger';
 
 export class CreateAcumuladochallengeDto {
-  @IsString()
+  @IsNumber()
   @IsNotEmpty()
   readonly rank: number;
 
@@ -16,7 +17,7 @@ export class CreateAcumuladochallengeDto {
   @IsNotEmpty()
   readonly nombre: string;
 
-  @IsDate()
+  @IsString()
   @IsNotEmpty()
   readonly plate: string;
 
@@ -24,9 +25,49 @@ export class CreateAcumuladochallengeDto {
   @IsNotEmpty()
   readonly categoria: string;
 
-  @IsString()
+  @IsNumber()
   @IsNotEmpty()
   readonly total: number;
+
+  @IsNumber()
+  @IsNotEmpty()
+  readonly uno: number;
+
+  @IsNumber()
+  @IsNotEmpty()
+  readonly dos: number;
+
+  @IsNumber()
+  @IsNotEmpty()
+  readonly tres: number;
+
+  @IsNumber()
+  @IsNotEmpty()
+  readonly cuatro: number;
+
+  @IsNumber()
+  @IsNotEmpty()
+  readonly cinco: number;
+
+  @IsNumber()
+  @IsNotEmpty()
+  readonly seis: number;
+
+  @IsNumber()
+  @IsNotEmpty()
+  readonly siete: number;
+
+  @IsNumber()
+  @IsNotEmpty()
+  readonly ocho: number;
+
+  @IsNumber()
+  @IsNotEmpty()
+  readonly nueve: number;
+
+  @IsNumber()
+  @IsNotEmpty()
+  readonly diez: number;
 }
 
 export class UpdateAcumuladochallengeDto extends PartialType(CreateAcumuladochallengeDto) {}

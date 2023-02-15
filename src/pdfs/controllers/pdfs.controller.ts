@@ -6,11 +6,14 @@ import {
   Body,
   Put,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 
 import { PdfsService } from '../services/pdfs.service';
 import { CreatePdfsDto, UpdatePdfsDto } from '../dtos/pdfs.dto';
+import { AuthGuard } from '@nestjs/passport';
 
+@UseGuards(AuthGuard('jwt'))
 @Controller('pdfs')
 export class PdfsController {
   constructor(private PdfsService: PdfsService) {}

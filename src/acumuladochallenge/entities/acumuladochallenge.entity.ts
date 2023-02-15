@@ -17,6 +17,36 @@ export class Acumuladochallenge extends Document {
 
   @Prop()
   total: number;
+
+  @Prop()
+  uno: number;
+
+  @Prop()
+  dos: number;
+
+  @Prop()
+  tres: number;
+
+  @Prop()
+  cuatro: number;
+
+  @Prop()
+  cinco: number;
+
+  @Prop()
+  seis: number;
+
+  @Prop()
+  siete: number;
+
+  @Prop()
+  ocho: number;
+
+  @Prop()
+  nueve: number;
+
+  @Prop()
+  diez: number;
 }
 
 export const AcumuladochallengeSchema = SchemaFactory.createForClass(Acumuladochallenge);

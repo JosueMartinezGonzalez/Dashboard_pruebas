@@ -10,9 +10,12 @@ export class Felicidadesdata extends Document {
   nombre: string;
 
   @Prop({ required: true })
-  plate: string;
+  texto: string;
 
   @Prop({ required: true })
+  plate: string;
+
+  @Prop()
   categoria: string;
 
   @Prop()

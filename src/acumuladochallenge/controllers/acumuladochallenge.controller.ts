@@ -6,11 +6,14 @@ import {
   Body,
   Put,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 
 import { AcumuladochallengeService } from '../services/acumuladochallenge.service';
 import { CreateAcumuladochallengeDto, UpdateAcumuladochallengeDto } from '../dtos/acumuladochallenge.dto';
+import { AuthGuard } from '@nestjs/passport';
 
+@UseGuards(AuthGuard('jwt'))
 @Controller('Acumuladochallenge')
 export class AcumuladochallengeController {
   constructor(private AcumuladochallengeService: AcumuladochallengeService) {}

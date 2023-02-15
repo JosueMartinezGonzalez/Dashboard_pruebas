@@ -10,7 +10,11 @@ import { PartialType } from '@nestjs/swagger';
 export class CreateClientesartecDto {
   @IsString()
   @IsNotEmpty()
-  readonly pdf: string;
+  readonly img: string;
+
+  @IsString()
+  @IsNotEmpty()
+  readonly nombre: string;
 }
 
 export class UpdateClientesartecDto extends PartialType(CreateClientesartecDto) {}

@@ -6,11 +6,14 @@ import {
   Body,
   Put,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 
 import { FelicidadesdataService } from '../services/felicidadesdata.service';
 import { CreateFelicidadesdataDto, UpdateFelicidadesdataDto } from '../dtos/felicidadesdata.dto';
+import { AuthGuard } from '@nestjs/passport';
 
+@UseGuards(AuthGuard('jwt'))
 @Controller('Felicidadesdata')
 export class FelicidadesdataController {
   constructor(private FelicidadesdataService: FelicidadesdataService) {}

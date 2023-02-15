@@ -6,11 +6,14 @@ import {
   Body,
   Put,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 
 import { ServiciosartecService } from '../services/serviciosartec.service';
 import { CreateServiciosartecDto, UpdateServiciosartecDto } from '../dtos/serviciosartec.dto';
+import { AuthGuard } from '@nestjs/passport';
 
+@UseGuards(AuthGuard('jwt'))
 @Controller('serviciosartec')
 export class ServiciosartecController {
   constructor(private ServiciosartecService: ServiciosartecService) {}

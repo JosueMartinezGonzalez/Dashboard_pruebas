@@ -6,11 +6,14 @@ import {
   Body,
   Put,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 
 import { CalendariosService } from '../services/calendarios.service';
 import { CreateCalendariosDto, UpdateCalendariosDto } from '../dtos/calendarios.dto';
+import { AuthGuard } from '@nestjs/passport';
 
+@UseGuards(AuthGuard('jwt'))
 @Controller('Calendarios')
 export class CalendariosController {
   constructor(private CalendariosService: CalendariosService) {}

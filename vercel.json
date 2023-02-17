@@ -24,8 +24,5 @@
     ],
     "env": {
     "NPM_INSTALL": "npm install --legacy-peer-deps"
-    },
-    "hooks": {
-    "postbuild": "npm run vercel-start"
     }
 }

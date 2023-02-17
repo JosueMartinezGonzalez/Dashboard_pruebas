@@ -3,10 +3,16 @@
     "builds": [
     {
         "src": "src/main.ts",
-        "use": "@vercel/node"
+        "use": "@vercel/node",
+        "output": {
+        "clean": true
+        }
     },
     {
-        "use": "@vercel/static"
+        "use": "@vercel/static",
+        "output": {
+        "clean": true
+        }
     }
     ],
     "routes": [
@@ -18,9 +24,6 @@
     ],
     "env": {
     "NPM_INSTALL": "npm install --legacy-peer-deps"
-    },
-    "output": {
-    "clean": true
     },
     "hooks": {
     "postbuild": "npm run vercel-start"

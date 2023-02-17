@@ -18,8 +18,5 @@
     ],
     "env": {
         "NPM_INSTALL": "npm install --legacy-peer-deps"
-    },
-    "output": {
-        "clean": true
     }
 }

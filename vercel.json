@@ -1,28 +1,30 @@
 {
     "version": 2,
     "builds": [
-    {
+        {
         "src": "src/main.ts",
-        "use": "@vercel/node",
-        "output": {
-        "clean": true
+        "use": "@vercel/node"
+        },
+        {
+        "use": "@vercel/static"
         }
-    },
-    {
-        "use": "@vercel/static",
-        "output": {
-        "clean": true
-        }
-    }
     ],
     "routes": [
-    {
+        {
         "src": "/(.*)",
         "dest": "/",
         "methods": ["GET", "POST", "PUT", "DELETE"]
-    }
+        }
     ],
     "env": {
-    "NPM_INSTALL": "npm install --legacy-peer-deps"
+        "NPM_INSTALL": "npm install --legacy-peer-deps"
+    },
+    "output": {
+        "clean": true
+    },
+    "functions": {
+        "api/**/*.js": {
+        "memory": 102400
+        }
     }
 }

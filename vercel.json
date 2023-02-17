@@ -1,13 +1,12 @@
 {
     "version": 2,
-    "env": {
-        "NPM_CONFIG_PRODUCTION": "false",
-        "NPM_INSTALL": "npm install --legacy-peer-deps"
-    },
     "builds": [
         {
         "src": "src/main.ts",
         "use": "@vercel/node"
+        },
+        {
+        "use": "@vercel/static"
         }
     ],
     "routes": [
@@ -17,15 +16,10 @@
         "methods": ["GET", "POST", "PUT", "DELETE"]
         }
     ],
-    "install": {
-        "include": [
-        "src/**/*"
-        ]
-    },
     "build": {
         "env": {
-        "CI": "1"
+        "NPM_CONFIG_PRODUCTION": "false"
         },
-        "postinstall": "npm run build && npm run start"
+        "command": "npm install --legacy-peer-deps && npm run build"
     }
 }

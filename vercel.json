@@ -1,21 +1,28 @@
 {
     "version": 2,
     "builds": [
-        {
-            "src": "src/main.ts",
-            "use": "@vercel/node"
-        }
+    {
+        "src": "src/main.ts",
+        "use": "@vercel/node"
+    },
+    {
+        "use": "@vercel/static"
+    }
     ],
     "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "/",
-            "methods": [
-                "GET",
-                "POST",
-                "PUT",
-                "DELETE"
-            ]
-        }
-    ]
+    {
+        "src": "/(.*)",
+        "dest": "/",
+        "methods": ["GET", "POST", "PUT", "DELETE"]
+    }
+    ],
+    "env": {
+    "NPM_INSTALL": "npm install --legacy-peer-deps"
+    },
+    "output": {
+    "clean": true
+    },
+    "hooks": {
+    "postbuild": "npm run vercel-start"
+    }
 }

@@ -1,24 +1,37 @@
 {
     "version": 2,
+    "env": {
+        "NPM_CONFIG_PRODUCTION": "false",
+        "NPM_INSTALL": "npm install --legacy-peer-deps"
+    },
     "builds": [
         {
         "src": "src/main.ts",
-        "use": "@vercel/node",
-        "build": {
-            "env": {
-            "NPM_INSTALL": "npm install --legacy-peer-deps"
-            },
-            "command": "npm run build"
-        },
-        "dev": {
-            "command": "npm run start:dev"
-        },
-        "routes": [
-            {
-            "src": "/(.*)",
-            "dest": "/src/main.ts"
-            }
-        ]
+        "use": "@vercel/node"
         }
-    ]
+    ],
+    "routes": [
+        {
+        "src": "/(.*)",
+        "dest": "/",
+        "methods": ["GET", "POST", "PUT", "DELETE"]
+        }
+    ],
+    "functions": {
+        "api/**/*.js": {
+        "memory": 512,
+        "maxDuration": 10
+        }
+    },
+    "install": {
+        "include": [
+        "src/**/*"
+        ]
+    },
+    "build": {
+        "env": {
+        "CI": "1"
+        },
+        "postinstall": "npm run build && npm run start"
+    }
 }

@@ -28,7 +28,7 @@
     },
     "headers": [
         {
-            "source": "/(.*)"
+            "source": "src/main.ts"
         }
     ]
 }

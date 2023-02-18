@@ -17,6 +17,14 @@ async function bootstrap() {
     }),
   );
 
+  // Cors
+  const corsOptions = {
+    origin: '*',
+    optionsSuccessStatus: 200,
+    methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT'],
+  };
+  app.use(cors(corsOptions));
+
   app.enableCors();
 
   const config = new DocumentBuilder()

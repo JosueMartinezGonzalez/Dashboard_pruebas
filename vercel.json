@@ -33,8 +33,5 @@
         {
             "source": "/(.*)"
         }
-    ],
-    "scripts": {
-        "postbuild": "npm run start"
-    }
+    ]
 }

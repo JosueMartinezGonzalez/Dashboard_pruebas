@@ -6,12 +6,14 @@ import {
   Body,
   Put,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
 import { UsersService } from '../services/users.service';
 import { CreateUserDto, UpdateUserDto } from '../dtos/user.dto';
-
+import { ApiKeyGuard } from '../../auth/guards/api-key.guard';
+@UseGuards(ApiKeyGuard)
 @ApiTags('users')
 @Controller('users')
 export class UsersController {

@@ -5,26 +5,26 @@ import {
   CallHandler
 } from '@nestjs/common';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+
 @Injectable()
-export class CorsInterceptors implements NestInterceptor {
+export class CorsInterceptor implements NestInterceptor {
+  constructor(private readonly options: { origin: string }) {}
+
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
-    const req = context.switchToHttp().getRequest();
-    const res = context.switchToHttp().getResponse();
+    const request = context.switchToHttp().getRequest();
+    const { headers } = request;
+    const origin = headers.origin || headers.referer;
+    const allowedOrigins = Array.isArray(this.options.origin)
+      ? this.options.origin
+      : [this.options.origin];
 
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'content-Type,x-requested-with');
-    res.header('Access-Control-Allow-Credentials', 'true');
-
-    if (req.method === 'OPTIONS') {
-      res.sendStatus(200);
-    } else {
-      return next.handle().pipe(
-        tap(() => {
-          res.header('Access-Control-Expose-Headers', 'Authorization');
-        }),
-      );
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      headers['Access-Control-Allow-Origin'] = origin;
+      headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept';
+      headers['Access-Control-Allow-Methods'] = 'GET,HEAD,PUT,PATCH,POST,DELETE';
+      headers['Access-Control-Allow-Credentials'] = true;
     }
+
+    return next.handle();
   }
 }

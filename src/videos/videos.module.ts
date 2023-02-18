@@ -3,7 +3,8 @@ import { MongooseModule } from '@nestjs/mongoose';
 
 import { VideoController } from './controllers/videos.controller';
 import { VideoService } from './services/videos.service';
-import { Video, VideoSchema } from './entities/videos.entity';
+import { Video, VideoSchema } from './entities/videos.entity'
+
 
 @Module({
   imports: [

@@ -17,8 +17,8 @@
     "build": {
         "env": {
             "DATABASE_NAME": "platzi-store",
-            "API_KEY": 4321,
-            "DATABASE_PORT": 1000,
+            "API_KEY": "4321",
+            "DATABASE_PORT": "1000",
             "MONGO_CONNECTION": "mongodb+srv://admin123:root321@dashboardmpx.qswdswg.mongodb.net/?retryWrites=true&w=majority&wtimeoutMS=2500",
             "MONGO_PORT": "",
             "MONGO_HOST": "",

@@ -2,20 +2,29 @@ import {
   Injectable,
   NestInterceptor,
   ExecutionContext,
-  CallHandler,
+  CallHandler
 } from '@nestjs/common';
 import { Observable } from 'rxjs';
-
+import { tap } from 'rxjs/operators';
 @Injectable()
-export class CorsInterceptors implements NestInterceptor {
+export class CorsInterceptor implements NestInterceptor {
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
-    const response = context.switchToHttp().getResponse();
-    response.setHeader('Access-Control-Allow-Origin', '*');
-    response.setHeader(
-      'Access-Control-Allow-Methods',
-      'GET, POST, PUT, DELETE, OPTIONS',
-    );
-    response.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept');
-    return next.handle();
+    const req = context.switchToHttp().getRequest();
+    const res = context.switchToHttp().getResponse();
+
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'content-Type,x-requested-with');
+    res.header('Access-Control-Allow-Credentials', 'true');
+
+    if (req.method === 'OPTIONS') {
+      res.sendStatus(200);
+    } else {
+      return next.handle().pipe(
+        tap(() => {
+          res.header('Access-Control-Expose-Headers', 'Authorization');
+        }),
+      );
+    }
   }
 }

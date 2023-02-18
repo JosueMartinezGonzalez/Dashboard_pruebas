@@ -16,7 +16,7 @@ import { CarrouselbmxService } from '../services/carrouselbmx.service';
 import { CreateCarrouselbmxDto, UpdateCarrouselbmxDto } from '../dtos/carrouselbmx.dto';
 import { AuthGuard } from '@nestjs/passport';
 
-@UseInterceptors(CorsInterceptors)
+@UseInterceptors(new CorsInterceptors({ origin: '*' }))
 @UseGuards(AuthGuard('jwt'))
 @Controller('carrouselbmx')
 export class CarrouselbmxController {

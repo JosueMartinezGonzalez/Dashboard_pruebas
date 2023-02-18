@@ -25,10 +25,5 @@
             "MONGO_DB": "platzi-store",
             "JWT_SECRET": "catsing my project"
         }
-    },
-    "headers": [
-        {
-            "source": "src/main.ts"
-        }
-    ]
+    }
 }

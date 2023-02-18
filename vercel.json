@@ -26,9 +26,6 @@
             "JWT_SECRET": "catsing my project"
         }
     },
-    "functions": {
-        "api/**/*.{js,ts}": { "runtime": "@vercel/node" }
-    },
     "headers": [
         {
             "source": "/(.*)"

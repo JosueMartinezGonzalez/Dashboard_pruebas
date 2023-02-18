@@ -23,7 +23,8 @@
             "MONGO_PORT": "",
             "MONGO_HOST": "",
             "MONGO_DB": "platzi-store",
-            "JWT_SECRET": "catsing my project"
+            "JWT_SECRET": "catsing my project",
+            "NPM_CONFIG_LEGACY_PEER_DEPS": "true"
         }
     }
 }

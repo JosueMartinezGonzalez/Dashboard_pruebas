@@ -6,6 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "install": "npm install --legacy-peer-deps",
     "prebuild": "rimraf dist && npm run env NPM_CONFIG_LOGLEVEL=error $NPM_INSTALL",
     "build": "nest build",
     "start": "nest start",
@@ -24,7 +25,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "@nestjs/common": "^7.6.13",
+    "@nestjs/common": "^8.4.7",
     "@nestjs/config": "^0.6.3",
     "@nestjs/core": "^7.6.13",
     "@nestjs/jwt": "^10.0.2",
@@ -47,7 +48,7 @@
     "passport-local": "^1.0.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^6.6.6",
+    "rxjs": "^7.8.0",
     "swagger-ui-express": "^4.1.6"
   },
   "devDependencies": {

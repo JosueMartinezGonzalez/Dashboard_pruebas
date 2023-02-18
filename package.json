@@ -6,7 +6,6 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "install": "npm install --legacy-peer-deps",
     "prebuild": "rimraf dist && npm run env NPM_CONFIG_LOGLEVEL=error $NPM_INSTALL",
     "build": "nest build",
     "start": "nest start",

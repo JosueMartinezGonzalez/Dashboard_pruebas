@@ -21,7 +21,7 @@ export class CorsInterceptors implements NestInterceptor {
     if (allowedOrigins.indexOf(origin) !== -1) {
       headers['Access-Control-Allow-Origin'] = origin;
       headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept';
-      headers['Access-Control-Allow-Methods'] = 'GET,HEAD,PUT,PATCH,POST,DELETE';
+      headers['Access-Control-Allow-Methods'] = 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS';
       headers['Access-Control-Allow-Credentials'] = true;
     }
 

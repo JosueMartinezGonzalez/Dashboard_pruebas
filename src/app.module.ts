@@ -8,6 +8,7 @@ import {
 import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
 import * as bodyParser from 'body-parser';
+import { cors } from '@nestjs/platform-express';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -90,5 +91,6 @@ export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(bodyParser.json({ limit: '5gb' }));
     consumer.apply(bodyParser.urlencoded({ limit: '5gb', extended: true }));
+    consumer.apply(cors()).forRoutes('*');
   }
 }

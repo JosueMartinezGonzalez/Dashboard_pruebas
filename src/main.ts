@@ -18,8 +18,6 @@ async function bootstrap() {
     }),
   );
 
-  app.enableCors();
-  // Cors
   const corsOptions: CorsOptions = {
     origin: '*',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
@@ -28,7 +26,6 @@ async function bootstrap() {
     credentials: true,
     allowedHeaders: 'Authorization,Content-Type',
   };
-  app.enableCors(corsOptions);
 
   const config = new DocumentBuilder()
     .setTitle('API')

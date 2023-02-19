@@ -16,12 +16,12 @@ import { CarrouselbmxService } from '../services/carrouselbmx.service';
 import { CreateCarrouselbmxDto, UpdateCarrouselbmxDto } from '../dtos/carrouselbmx.dto';
 import { AuthGuard } from '@nestjs/passport';
 
-@UseInterceptors(new CorsInterceptors({ origin: '*' }))
 @UseGuards(AuthGuard('jwt'))
 @Controller('carrouselbmx')
 export class CarrouselbmxController {
   constructor(private CarrouselbmxService: CarrouselbmxService) {}
 
+  @UseInterceptors(new CorsInterceptors({ origin: '*' }))
   @Get()
   findAll() {
     return this.CarrouselbmxService.findAll();
@@ -32,6 +32,7 @@ export class CarrouselbmxController {
     return this.CarrouselbmxService.findOne(id);
   }
 
+  @UseInterceptors(new CorsInterceptors({ origin: '*' }))
   @Post()
   create(@Body() payload: CreateCarrouselbmxDto) {
     return this.CarrouselbmxService.create(payload);

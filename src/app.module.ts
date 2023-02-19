@@ -8,7 +8,6 @@ import {
 import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
 import * as bodyParser from 'body-parser';
-import { cors } from '@nestjs/platform-express';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -91,6 +90,18 @@ export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(bodyParser.json({ limit: '5gb' }));
     consumer.apply(bodyParser.urlencoded({ limit: '5gb', extended: true }));
-    consumer.apply(cors()).forRoutes('*');
+    consumer.apply((req, res, next) => {
+      res.header('Access-Control-Allow-Origin', '*');
+      res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+      res.header(
+        'Access-Control-Allow-Headers',
+        'Content-Type, Authorization, Content-Length, X-Requested-With',
+      );
+      if ('OPTIONS' === req.method) {
+        res.sendStatus(200);
+      } else {
+        next();
+      }
+    });
   }
 }

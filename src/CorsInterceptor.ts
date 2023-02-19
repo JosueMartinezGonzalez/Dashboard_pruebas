@@ -7,7 +7,7 @@ import {
 import { Observable } from 'rxjs';
 
 @Injectable()
-export class CorsInterceptor implements NestInterceptor {
+export class CorsInterceptors implements NestInterceptor {
   constructor(private readonly options: { origin: string }) {}
 
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {

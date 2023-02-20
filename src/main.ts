@@ -3,8 +3,7 @@ import { ValidationPipe } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { CorsOptions } from '@nestjs/common/interfaces/external/cors-options.interface';
-// import * as cors from 'cors';
-import cors from 'cors';
+import * as cors from 'cors';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -18,11 +17,6 @@ async function bootstrap() {
     }),
   );
 
-  const corsOptions: CorsOptions = {
-    origin: '*',
-    methods: 'GET, HEAD, PUT, PATCH, POST, DELETE, OPTIONS',
-  };
-
   const config = new DocumentBuilder()
     .setTitle('API')
     .setDescription('PLATZI STORE')
@@ -30,8 +24,14 @@ async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('docs', app, document);
-  app.enableCors(corsOptions);
-  app.use(cors());
+  app.use(
+    cors({
+      origin: '*',
+      methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+      allowedHeaders: ['Content-Type', 'Authorization'],
+      optionsSuccessStatus: 200,
+    }),
+  );
   await app.listen(process.env.PORT);
 }
 bootstrap();

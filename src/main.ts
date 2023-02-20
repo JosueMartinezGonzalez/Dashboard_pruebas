@@ -21,10 +21,6 @@ async function bootstrap() {
   const corsOptions: CorsOptions = {
     origin: '*',
     methods: 'GET, HEAD, PUT, PATCH, POST, DELETE, OPTIONS',
-    preflightContinue: false,
-    optionsSuccessStatus: 204,
-    credentials: true,
-    allowedHeaders: 'Authorization,Content-Type',
   };
 
   const config = new DocumentBuilder()
@@ -35,6 +31,7 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('docs', app, document);
   app.enableCors(corsOptions);
+  app.use(cors());
   await app.listen(process.env.PORT);
 }
 bootstrap();

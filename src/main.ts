@@ -3,6 +3,7 @@ import { ValidationPipe } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import * as cors from 'cors';
+import * as bodyParser from 'body-parser';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -15,6 +16,9 @@ async function bootstrap() {
       },
     }),
   );
+
+  app.use(bodyParser.json({ limit: '5gb' }));
+  app.use(bodyParser.urlencoded({ limit: '5gb', extended: true }));
 
   const config = new DocumentBuilder()
     .setTitle('API')

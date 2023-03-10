@@ -29,6 +29,7 @@ import { AcumuladochampshipModule } from './acumuladochampship/acumuladochampshi
 import { AcumuladochallengeModule } from './acumuladochallenge/acumuladochallenge.module';
 import { FelicidadesdatasModule } from './felicidadesdata/felicidadesdata.module';
 import { VentasbmxModule } from './ventasbmx/ventasbmx.module';
+import { TelefonosModule } from './telefonos/telefonos.module';
 import { AuthModule } from './auth/auth.module';
 
 import { ProductsModule } from './products/products.module';
@@ -67,6 +68,7 @@ import config from './config';
     AcumuladochallengeModule,
     VentasbmxModule,
     FelicidadesdatasModule,
+    TelefonosModule,
     ProductsModule,
     DatabaseModule,
     AuthModule,

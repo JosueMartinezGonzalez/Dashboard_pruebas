@@ -9,7 +9,7 @@ export class Noticia extends Document {
   @Prop({ required: true })
   titulo: string;
 
-  @Prop()
+  @Prop({ required: false })
   fecha: string;
 
   @Prop()

@@ -15,7 +15,7 @@ export class CreateNoticiaDto {
   @IsString()
   readonly titulo: string;
 
-  @IsDateString()
+  @IsString()
   readonly date: string;
 
   @IsString()

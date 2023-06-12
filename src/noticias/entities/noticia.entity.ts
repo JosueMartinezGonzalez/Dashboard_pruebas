@@ -9,8 +9,8 @@ export class Noticia extends Document {
   @Prop({ required: true })
   titulo: string;
 
-  @Prop({ required: false })
-  fecha: string;
+  @Prop()
+  date: string;
 
   @Prop()
   descripcion: string;

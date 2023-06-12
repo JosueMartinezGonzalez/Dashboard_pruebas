@@ -4,6 +4,7 @@ import {
   IsDate,
   IsArray,
   ValidateNested,
+  IsDateString,
 } from 'class-validator';
 import { PartialType } from '@nestjs/swagger';
 
@@ -14,7 +15,7 @@ export class CreateNoticiaDto {
   @IsString()
   readonly titulo: string;
 
-  @IsString()
+  @IsDateString()
   readonly date: string;
 
   @IsString()
